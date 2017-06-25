@@ -2,7 +2,11 @@
 
 本项目记录 webpack 深度使用以及原理理解。
 
-## 第一步：启动一个基本的 vue 项目（`webpack3/vue2/vue-router2/autoprefixer...`）
+当前分支为 **deep-use-step1**：
+
+*启动一个基本的 vue 项目（`webpack3/vue2/vue-router2/autoprefixer...`）*
+
+## 步骤
 
 +   进入一个空文件夹，执行 `npm init`，生成 `package.json` 文件。
 
