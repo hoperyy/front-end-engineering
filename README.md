@@ -11,7 +11,6 @@
 + [webpack3 使用过程中的坑](https://github.com/liuyuanyangscript/deep-webpack/issues/3)
 + [解决 webpack(2/3)/webpack-dev-server 监听文件时频繁触发编译和回调的问题](https://github.com/liuyuanyangscript/deep-webpack/issues/4)
 + 待处理
-  + [webpack3 深入配置](https://github.com/liuyuanyangscript/deep-webpack/issues/5)
   + [webpack2 打包优化](https://github.com/liuyuanyangscript/deep-webpack/issues/6)
 
 ### 原理篇
