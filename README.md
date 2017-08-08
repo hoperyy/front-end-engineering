@@ -4,7 +4,7 @@
 
 ## 目录
 
-### 使用篇(更新至 webpack 3.0.0)
+### 使用篇(更新至 webpack 3.3.0)
 
 + [启动一个基本的 vue 项目（`webpack3/vue2/vue-router2/autoprefixer...`）](https://github.com/liuyuanyangscript/deep-webpack/issues/1)
 + [webpack 进阶使用与性能优化](https://github.com/liuyuanyangscript/deep-webpack/issues/2)
