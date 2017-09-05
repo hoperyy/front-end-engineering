@@ -4,7 +4,7 @@
 
 ## 目录
 
-### 使用篇(更新至 webpack 3.5.1)
+### 使用篇(更新至 webpack 3.5.5)
 
 +	[脚手架与业务目录的目录结构浅析](https://github.com/liuyuanyangscript/deep-webpack/issues/8)(2017/08/23)
 +   [解决 webpack/webpack-dev-server 监听文件时频繁触发编译和回调的问题](https://github.com/hoperyy/deep-webpack/issues/4)(2017)
