@@ -15,4 +15,9 @@
 
 ### 原理篇
 
-+ to do...
++   [实现一个简单的 webpack]()
+
+### 资料
+
++   [webpack源码学习系列之一：如何实现一个简单的webpack](https://github.com/youngwind/blog/issues/99)
++   [ 深入剖析 webpack 打包生成的一大堆代码到底是啥](http://blog.csdn.net/haodawang/article/details/77126686)
