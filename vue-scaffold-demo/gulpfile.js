@@ -32,13 +32,21 @@ function configDevServer({ srcDir, buildDir, debugPort }) {
         }
     });
 
-    return server;
+    server.listen(debugPort);
+
+}
+
+
+function runBuild({ srcDir, buildDir, debugPort }) {
+
+    const webpack = require('webpack');
+    const webpackConfig = require('./webpack.config')({ srcDir, buildDir });
+
+    webpack(webpackConfig, () => {});
 }
 
 module.exports = ({ srcDir, buildDir, currentEnv, debugPort }) => {
 
-    const server = configDevServer({ srcDir, buildDir, debugPort });
-
-    server.listen(debugPort);
-
+    runDev({ srcDir, buildDir, debugPort });
+    // runBuild({ srcDir, buildDir });
 };
