@@ -15,7 +15,7 @@
 
 ### 原理篇
 
-+   [实现一个简单的 webpack]()
++   [实现一个简单的 webpack](https://github.com/hoperyy/deep-webpack/issues/9)
 
 ### 资料
 
