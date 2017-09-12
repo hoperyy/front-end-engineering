@@ -11,6 +11,83 @@ const writeChunk = require('./writeChunk');
 const templateSingle = fs.readFileSync(path.join(__dirname, 'templateSingle.js'));
 const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
 
+/*
+{ modules:
+   { '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js':
+      { id: 0,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js',
+        name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js',
+        requires: [Array],
+        asyncs: [],
+        source: 'let a = require(\'a\');\nlet b = require(\'b\');\nlet c = require(\'c\');\na();\nb();\nc();\n',
+        chunkId: 0,
+        chunks: [Array] },
+     '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/a.js':
+      { id: 1,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/a.js',
+        name: 'a',
+        requires: [],
+        asyncs: [],
+        source: '// module a\n\nmodule.exports = function () {\n    console.log(\'a\')\n};',
+        chunks: [Array] },
+     '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/b.js':
+      { id: 2,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/b.js',
+        name: 'b',
+        requires: [],
+        asyncs: [],
+        source: '// module b\n\nmodule.exports = function () {\n    console.log(\'b\')\n};',
+        chunks: [Array] },
+     '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/node_modules/c.js':
+      { id: 3,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/node_modules/c.js',
+        name: 'c',
+        requires: [],
+        asyncs: [],
+        source: 'module.exports = function () {\n    console.log(\'c\')\n}',
+        chunks: [Array] } },
+  chunks: { '0': { id: 0, modules: { '0': 'include', '1': 'include', '2': 'include', '3': 'include' } } },
+  mapModuleNameToId:
+   { '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js': 0,
+     a: 1,
+     b: 2,
+     c: 3 },
+  modulesById:
+   { '0':
+      { id: 0,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js',
+        name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/example.js',
+        requires: [Array],
+        asyncs: [],
+        source: 'let a = require(\'a\');\nlet b = require(\'b\');\nlet c = require(\'c\');\na();\nb();\nc();\n',
+        chunkId: 0,
+        chunks: [Array] },
+     '1':
+      { id: 1,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/a.js',
+        name: 'a',
+        requires: [],
+        asyncs: [],
+        source: '// module a\n\nmodule.exports = function () {\n    console.log(\'a\')\n};',
+        chunks: [Array] },
+     '2':
+      { id: 2,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/b.js',
+        name: 'b',
+        requires: [],
+        asyncs: [],
+        source: '// module b\n\nmodule.exports = function () {\n    console.log(\'b\')\n};',
+        chunks: [Array] },
+     '3':
+      { id: 3,
+        filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/simple/node_modules/c.js',
+        name: 'c',
+        requires: [],
+        asyncs: [],
+        source: 'module.exports = function () {\n    console.log(\'c\')\n}',
+        chunks: [Array] } } }
+*/
+
 /**
  * 负责调用其他模块
  * @param {string} mainModule 主入口模块
@@ -41,6 +118,7 @@ module.exports = function (mainModule, options) {
             if (chunk.id === 0) {
                 // 主chunk;
                 if (Object.keys(depTree.chunks).length > 1) { // 如果是多入口
+                    console.log('async template');
                     buffer.push(templateAsync);
                     buffer.push('/******/({a:');
                     buffer.push(`"${options.outputPostfix}"`);
@@ -48,10 +126,12 @@ module.exports = function (mainModule, options) {
                     buffer.push(`"${options.outputJsonpFunction}"`);
                     buffer.push(',\n');
                 } else { // 如果是单入口
+                    console.log('single template');
                     buffer.push(templateSingle);
                     buffer.push('/******/({\n');
                 }
             } else {
+                console.log('jsonp chunk');
                 // jsonp chunk
                 buffer.push('/*****/');
                 buffer.push(options.outputJsonpFunction);
