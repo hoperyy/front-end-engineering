@@ -44,7 +44,7 @@ module.exports = function (mainModule, options) {
 function parseModule(depTree, moduleName, context, options) {
     let module;
     return co(function *() {
-        // 查找模块
+        // 查找模块的绝对路径
         let absoluteFileName = yield _resolve(moduleName, context, options.resolve);
         // 用模块的绝对路径作为模块的键值,保证唯一性
         module = depTree.modules[absoluteFileName] = {
@@ -67,10 +67,11 @@ function parseModule(depTree, moduleName, context, options) {
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
 
         let parsedModule = parse(ret);
-        module.requires = parsedModule.requires || []; // ???
+        // 写入模块包含的依赖
+        module.requires = parsedModule.requires || [];
 
-
-        module.asyncs = parsedModule.asyncs || []; // ???
+        // 写入模块包含的分片依赖
+        module.asyncs = parsedModule.asyncs || [];
         module.source = parsedModule.source;
 
         // 写入映射关系
