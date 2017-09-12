@@ -16,7 +16,7 @@ const co = require('co');
  * @returns {*|Promise}
  */
 module.exports = function (moduleIdentifier, context, options) {
-    console.log(moduleIdentifier, context, options);
+    // moduleIdentifier: a/b/c...
     // context: 入口所在的目录
     // options: loaders，如 { loaders: [ { test: /\.less$/, loader: 'style!less' } ] }
     return co(function *() {
@@ -46,7 +46,6 @@ module.exports = function (moduleIdentifier, context, options) {
             }
 
         }
-
         return results.join('!');
         // 结果形如: /Users/youngwind/www/fake-webpack/node_modules/fake-style-loader/index.js!/Users/youngwind/www/fake-webpack/node_modules/fake-less-loader/index.js!/Users/youngwind/www/fake-webpack/examples/loader/style.less
     })

@@ -48,5 +48,3 @@ options.resolve.loaders.push({
 });
 
 webpack(options.input, options);
-
-
