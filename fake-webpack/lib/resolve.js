@@ -38,7 +38,7 @@ module.exports = function (moduleIdentifier, context, options) {
 
         // 因为某个 loader 可能的路径有很多,所以需要生成很多备选的路径
         let dirs = generateDirs(context, identifiers);   // 至此,生成待查找 dirs
-
+        // console.log(dirs);
         for (let dir of dirs) {
             let result = yield statPromise(dir);
             if (result) {
@@ -46,6 +46,7 @@ module.exports = function (moduleIdentifier, context, options) {
             }
 
         }
+        
         return results.join('!');
         // 结果形如: /Users/youngwind/www/fake-webpack/node_modules/fake-style-loader/index.js!/Users/youngwind/www/fake-webpack/node_modules/fake-less-loader/index.js!/Users/youngwind/www/fake-webpack/examples/loader/style.less
     })
