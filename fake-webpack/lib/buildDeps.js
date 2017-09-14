@@ -18,7 +18,7 @@ let cid = 0; // chunk id
  */
 module.exports = function (mainModule, options) {
     let depTree = {
-        modules: {},            // 用于存储各个模块对象，并以所有依赖到的文件的绝对路径为 key，确保唯一性
+        modules: {},            // 用于存储各个模块对象，并以所有依赖到的文件的绝对路径为 key，确保唯一性 modulesByPath
         chunks: {},             // 存储各个块
         mapModuleNameToId: {},   // 用于映射模块名到模块id之间的关系
         modulesById: {}           // 通过模块id索引模块
@@ -66,7 +66,9 @@ function parseModule(depTree, moduleName, context, options) {
         // 处理 loader
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
 
+        // 解析各种依赖
         let parsedModule = parse(ret);
+        
         // 写入模块包含的依赖
         module.requires = parsedModule.requires || [];
 
