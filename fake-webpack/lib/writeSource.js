@@ -6,7 +6,7 @@
 
 /**
  * 将依赖模块名替换成依赖模块id
- * @param {object} module 模块对象
+ * @param {object} module 模块对象 depTree.modulesById[moduleId]
  * @param {object} depTree 模块依赖关系对象
  * @returns {string} 替换模块名之后的模块内容字符串
  */

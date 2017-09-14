@@ -45,13 +45,22 @@ function parseModule(depTree, moduleName, context, options) {
     let module;
     return co(function *() {
         // 查找模块的绝对路径
+        // options.resolve { loaders: [ { test: /\.less$/, loader: 'style!less' } ] }
         let absoluteFileName = yield _resolve(moduleName, context, options.resolve);
+
+        // /Users/.../examples/loader/example.js
+        // /Users/.../node_modules/style-loader-fake/index.js!/Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less
+        // /Users/.../fake-webpack/node_modules/style-loader-fake/addStyle.js  新增模块
+        // /Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less 新增模块
+
         // 用模块的绝对路径作为模块的键值,保证唯一性
         module = depTree.modules[absoluteFileName] = {
             id: mid++, // id 自增
             filename: absoluteFileName, // 绝对路径
             name: moduleName // 文件名
         };
+
+        console.log(absoluteFileName);
 
         let filenameWithLoaders = absoluteFileName;
 
@@ -68,7 +77,7 @@ function parseModule(depTree, moduleName, context, options) {
 
         // 解析各种依赖
         let parsedModule = parse(ret);
-        
+
         // 写入模块包含的依赖
         module.requires = parsedModule.requires || [];
 
