@@ -34,6 +34,13 @@ module.exports = function (moduleIdentifier, context, options) {
             }
         }
 
+        // identifiers
+        /*
+        [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js' ]
+        [ 'style', 'less', './style.less' ]
+        [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle' ]
+        */
+
         identifiers.push(moduleIdentifier);
 
         // 因为某个 loader 可能的路径有很多,所以需要生成很多备选的路径
@@ -46,7 +53,7 @@ module.exports = function (moduleIdentifier, context, options) {
             }
 
         }
-        
+
         return results.join('!');
         // 结果形如: /Users/youngwind/www/fake-webpack/node_modules/fake-style-loader/index.js!/Users/youngwind/www/fake-webpack/node_modules/fake-less-loader/index.js!/Users/youngwind/www/fake-webpack/examples/loader/style.less
     })
