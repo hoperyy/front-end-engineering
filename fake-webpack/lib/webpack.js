@@ -20,7 +20,7 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js',
             requires: [{
                 name: './style.less',
-                nameRange: [Array],
+                nameRange: [8, 22],
                 id: 1
             }],
             asyncs: [],
@@ -34,12 +34,12 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             name: './style.less',
             requires: [{
                 name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle',
-                nameRange: [Array],
+                nameRange: [ 8, 119],
                 id: 2
             },
             {
                 name: '!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less',
-                nameRange: [Array],
+                nameRange: [129, 337],
                 id: 3
             }],
             asyncs: [],
@@ -53,7 +53,7 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             requires: [],
             asyncs: [],
             source: '\n\nmodule.exports = function (cssCode) {\n    let styleElement = document.createElement("style");\n    styleElement.type = "text/css";\n    if (styleElement.styleSheet) {\n        styleElement.styleSheet.cssText = cssCode;\n    } else {\n        styleElement.appendChild(document.createTextNode(cssCode));\n    }\n    document.getElementsByTagName("head")[0].appendChild(styleElement);\n};',
-            chunks: [Array]
+            chunks: [0]
         },
         '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less': {
             id: 3,
@@ -62,13 +62,18 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             requires: [],
             asyncs: [],
             source: 'module.exports = ".content {\\n  width: 50px;\\n  height: 50px;\\n  background-color: #000fff;\\n}\\n"',
-            chunks: [Array]
+            chunks: [0]
         }
     },
     chunks: {
         '0': {
             id: 0,
-            modules: [Object]
+            modules: {
+                '0': 'include',
+                '1': 'include',
+                '2': 'include',
+                '3': 'include'
+            }
         }
     },
     mapModuleNameToId: {
@@ -82,7 +87,11 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             id: 0,
             filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js',
             name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js',
-            requires: [[Object]],
+            requires: [[{
+                name: './style.less',
+                nameRange: [8, 22],
+                id: 1
+            }]],
             asyncs: [],
             source: 'require(\'./style.less\');\n',
             chunkId: 0,
@@ -92,7 +101,16 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             id: 1,
             filename: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less',
             name: './style.less',
-            requires: [[Object], [Object]],
+            requires: [{
+                name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle',
+                nameRange: [8, 119],
+                id: 2
+            },
+            {
+                name: '!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less',
+                nameRange: [129, 337],
+                id: 3
+            }],
             asyncs: [],
             source: 'require("/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle")(require("!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less"))',
             chunks: [0]
@@ -131,7 +149,7 @@ module.exports = function (mainModule, options) {
         // 分析模块间的依赖关系,生成模块依赖关系
         let depTree = yield buildDeps(mainModule, options);
 
-        console.log(depTree.modulesById)
+        console.log(depTree.modules['/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less'].requires)
         // 拼接生成目标JS文件
         // 入口文件及其依赖
         for (let chunkId in depTree.chunks) {
