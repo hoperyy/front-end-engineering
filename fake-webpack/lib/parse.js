@@ -25,7 +25,9 @@ module.exports = function (source) {
  * @param  {object} statements AST语法树
  */
 function walkStatements(module, statements) {
-    statements.forEach(statement => walkStatement(module, statement));
+    statements.forEach(statement => {
+        walkStatement(module, statement)
+    });
 }
 
 /**
