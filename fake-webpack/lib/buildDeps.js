@@ -48,10 +48,13 @@ function parseModule(depTree, moduleName, context, options) {
         // options.resolve { loaders: [ { test: /\.less$/, loader: 'style!less' } ] }
         let absoluteFileName = yield _resolve(moduleName, context, options.resolve);
 
-        // /Users/.../examples/loader/example.js
-        // /Users/.../node_modules/style-loader-fake/index.js!/Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less
-        // /Users/.../fake-webpack/node_modules/style-loader-fake/addStyle.js  新增模块
-        // /Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less 新增模块
+        // absoluteFileName
+        /*
+        /Users/.../examples/loader/example.js
+        /Users/.../node_modules/style-loader-fake/index.js!/Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less
+        /Users/.../fake-webpack/node_modules/style-loader-fake/addStyle.js  新增模块
+        /Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less 新增模块
+        */
 
         // 用模块的绝对路径作为模块的键值,保证唯一性
         module = depTree.modules[absoluteFileName] = {
@@ -66,10 +69,12 @@ function parseModule(depTree, moduleName, context, options) {
         let loaders = absoluteFileName.split(/!/g);
 
         // loaders
-        // [] '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js'
-        // [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/index.js','/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js' ] './style.less'
-        // [] '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle'
-        // [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js' ] '!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less'
+        /*
+        [ '/examples/loader/example.js' ] '/examples/loader/example.js'
+        [ '/node_modules/style-loader-fake/index.js', '/node_modules/less-loader-fake/index.js', '/examples/loader/style.less' ] '/node_modules/style-loader-fake/index.js!/node_modules/less-loader-fake/index.js!/examples/loader/style.less'
+        [ '/node_modules/style-loader-fake/addStyle.js' ] '/node_modules/style-loader-fake/addStyle.js'
+        [ '/node_modules/less-loader-fake/index.js', '/examples/loader/style.less' ] '/node_modules/less-loader-fake/index.js!/examples/loader/style.less'
+        */
 
         let filename = loaders.pop();
         if(!filename) {
@@ -77,8 +82,6 @@ function parseModule(depTree, moduleName, context, options) {
         }
 
         let source = fs.readFileSync(filename).toString();
-
-        console.log(loaders, moduleName);
 
         // 处理 loader
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
