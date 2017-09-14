@@ -60,7 +60,7 @@ function parseModule(depTree, moduleName, context, options) {
             name: moduleName // 文件名
         };
 
-        console.log(absoluteFileName);
+        // console.log(absoluteFileName);
 
         let filenameWithLoaders = absoluteFileName;
 
@@ -74,6 +74,10 @@ function parseModule(depTree, moduleName, context, options) {
 
         // 处理 loader
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
+
+        // ret 经过 loader 检测处理过的 source:
+        // require('./style.less');
+        // require("/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle")(require("!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less"))
 
         // 解析各种依赖
         let parsedModule = parse(ret);

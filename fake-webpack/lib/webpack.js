@@ -34,7 +34,7 @@ const templateAsync = fs.readFileSync(path.join(__dirname, 'templateAsync.js'));
             name: './style.less',
             requires: [{
                 name: '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle',
-                nameRange: [ 8, 119],
+                nameRange: [8, 119],
                 id: 2
             },
             {
@@ -149,7 +149,6 @@ module.exports = function (mainModule, options) {
         // 分析模块间的依赖关系,生成模块依赖关系
         let depTree = yield buildDeps(mainModule, options);
 
-        console.log(depTree.modules['/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less'].requires)
         // 拼接生成目标JS文件
         // 入口文件及其依赖
         for (let chunkId in depTree.chunks) {
