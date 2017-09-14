@@ -87,7 +87,7 @@ function parseModule(depTree, moduleName, context, options) {
 
         // 写入模块包含的分片依赖
         module.asyncs = parsedModule.asyncs || [];
-        module.source = parsedModule.source;
+        module.source = parsedModule.source; // 就是 ret
 
         // 写入映射关系
         depTree.mapModuleNameToId[moduleName] = mid - 1;
