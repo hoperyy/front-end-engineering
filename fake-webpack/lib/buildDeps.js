@@ -60,11 +60,17 @@ function parseModule(depTree, moduleName, context, options) {
             name: moduleName // 文件名
         };
 
-        // console.log(absoluteFileName);
 
         let filenameWithLoaders = absoluteFileName;
 
         let loaders = absoluteFileName.split(/!/g);
+
+        // loaders
+        // [] '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/example.js'
+        // [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/index.js','/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js' ] './style.less'
+        // [] '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle'
+        // [ '/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js' ] '!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less'
+
         let filename = loaders.pop();
         if(!filename) {
             throw `找不到文件${filename}`;
@@ -72,15 +78,20 @@ function parseModule(depTree, moduleName, context, options) {
 
         let source = fs.readFileSync(filename).toString();
 
+        console.log(loaders, moduleName);
+
         // 处理 loader
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
 
-        // ret 经过 loader 检测处理过的 source:
+        // ret: 经过 loader 检测处理过的 source:
         // require('./style.less');
         // require("/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle")(require("!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less"))
-
+        // module.exports = ".content {\n  width: 50px;\n  height: 50px;\n  background-color: #000fff;\n}\n"
+        // console.log(ret);
         // 解析各种依赖
         let parsedModule = parse(ret);
+
+        // 有 require 的内容: {requires: {}, source: ''} || 没有 require 的内容: {source: ''}
 
         // 写入模块包含的依赖
         module.requires = parsedModule.requires || [];
