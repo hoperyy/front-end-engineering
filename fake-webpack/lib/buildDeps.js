@@ -44,7 +44,7 @@ module.exports = function (mainModule, options) {
 function parseModule(depTree, moduleName, context, options) {
     let module;
     return co(function *() {
-        // 查找模块的绝对路径
+        // 查找模块的绝对路径（含 loader 路径）
         // options.resolve { loaders: [ { test: /\.less$/, loader: 'style!less' } ] }
         let absoluteFileName = yield _resolve(moduleName, context, options.resolve);
 
@@ -107,11 +107,11 @@ function parseModule(depTree, moduleName, context, options) {
         depTree.modulesById[mid - 1] = module;
 
         console.log('进入 parseModule');
-        console.log('resolve 前: ', moduleName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
-        console.log('resolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
-        console.log('resolve 中发现的依赖: ', parsedModule.requires && parsedModule.requires.length, '\n', parsedModule.requires);
-        console.log('\nsource: ', source);
-        console.log('经过 loader 处理的 source: ', ret);
+        console.log('\nresolve 前: ', moduleName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
+        console.log('\nresolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
+        // console.log('\nsource: ', source);
+        console.log('\n经过 loader 处理的 source: ', ret);
+        console.log('\nparse 解析经过 loader 处理的 source 发现的依赖: ', parsedModule.requires && parsedModule.requires.length, '\n', parsedModule.requires);
 
         // 如果此模块有依赖的模块,采取深度遍历的原则,遍历解析其依赖的模块
         let requireModules = parsedModule.requires;
