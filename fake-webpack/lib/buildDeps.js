@@ -56,7 +56,7 @@ function parseModule(depTree, moduleName, context, options) {
         /Users/.../node_modules/less-loader-fake/index.js!/Users/.../examples/loader/style.less 新增模块
         */
 
-            // 用模块的绝对路径作为模块的键值,保证唯一性
+        // 用模块的绝对路径作为模块的键值,保证唯一性
         module = depTree.modules[absoluteFileName] = {
             id: mid++, // id 自增
             filename: absoluteFileName, // 绝对路径
@@ -90,7 +90,6 @@ function parseModule(depTree, moduleName, context, options) {
         // require('./style.less');
         // require("/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle")(require("!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less"))
         // module.exports = ".content {\n  width: 50px;\n  height: 50px;\n  background-color: #000fff;\n}\n"
-        // console.log(ret);
         // 解析各种依赖
         let parsedModule = parse(ret);
 
@@ -109,8 +108,10 @@ function parseModule(depTree, moduleName, context, options) {
 
         console.log('进入 parseModule');
         console.log('resolve 前: ', moduleName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
-        console.log('resolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''), '\n');
-        console.log('发现的依赖: ', parsedModule.requires);
+        console.log('resolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
+        console.log('resolve 中发现的依赖: ', parsedModule.requires && parsedModule.requires.length, '\n', parsedModule.requires);
+        console.log('\nsource: ', source);
+        console.log('经过 loader 处理的 source: ', ret);
 
         // 如果此模块有依赖的模块,采取深度遍历的原则,遍历解析其依赖的模块
         let requireModules = parsedModule.requires;
