@@ -51,12 +51,12 @@ function parseModule(depTree, moduleName, context, options) {
         // absoluteFileName
         /*
         /Users/.../examples/loader/example.js
-        /Users/.../node_modules/style-loader-fake/index.js!/Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less
-        /Users/.../fake-webpack/node_modules/style-loader-fake/addStyle.js  新增模块
-        /Users/.../fake-webpack/node_modules/less-loader-fake/index.js!/Users/.../fake-webpack/examples/loader/style.less 新增模块
+        /Users/.../node_modules/style-loader-fake/index.js!/Users/.../node_modules/less-loader-fake/index.js!/Users/.../examples/loader/style.less
+        /Users/.../node_modules/style-loader-fake/addStyle.js  新增模块
+        /Users/.../node_modules/less-loader-fake/index.js!/Users/.../examples/loader/style.less 新增模块
         */
 
-        // 用模块的绝对路径作为模块的键值,保证唯一性
+            // 用模块的绝对路径作为模块的键值,保证唯一性
         module = depTree.modules[absoluteFileName] = {
             id: mid++, // id 自增
             filename: absoluteFileName, // 绝对路径
@@ -83,7 +83,7 @@ function parseModule(depTree, moduleName, context, options) {
 
         let source = fs.readFileSync(filename).toString();
 
-        // 处理 loader
+        // 执行 loader
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
 
         // ret: 经过 loader 检测处理过的 source:
@@ -107,10 +107,18 @@ function parseModule(depTree, moduleName, context, options) {
         depTree.mapModuleNameToId[moduleName] = mid - 1;
         depTree.modulesById[mid - 1] = module;
 
+        console.log('进入 parseModule');
+        console.log('resolve 前: ', moduleName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
+        console.log('resolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''), '\n');
+        console.log('发现的依赖: ', parsedModule.requires);
+
         // 如果此模块有依赖的模块,采取深度遍历的原则,遍历解析其依赖的模块
         let requireModules = parsedModule.requires;
         if (requireModules && requireModules.length > 0) {
             for (let require of requireModules) {
+                console.log('\n\n');
+                console.log('~~~~ 发现依赖，递归1: ', require.name, '传入下一个 parseModule');
+                console.log('\n\n');
                 depTree = yield parseModule(depTree, require.name, context, options);
             }
             // 写入依赖模块的id,生成目标JS文件的时候会用到
@@ -127,6 +135,7 @@ function parseModule(depTree, moduleName, context, options) {
                 for (let require of requires) {
                     // 已经处理过的模块,不再处理
                     if (depTree.mapModuleNameToId[require.name]) continue;
+                    console.log('~~~~ 递归2: ', require.name);
                     depTree = yield parseModule(depTree, require.name, context, options);
                 }
 
