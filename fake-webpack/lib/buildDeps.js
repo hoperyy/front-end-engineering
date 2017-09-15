@@ -44,6 +44,9 @@ module.exports = function (mainModule, options) {
 function parseModule(depTree, moduleName, context, options) {
     let module;
     return co(function *() {
+
+        // 整个模块的逻辑分为 4 步：1、 _resolve 解析出绝对路径（含 loader）2、execLoaders 执行 loader 获取 loader 解析后的文件内容 3、parse 解析 loader 处理后的内容得到其中的各项依赖 4、递归解析依赖
+
         // 查找模块的绝对路径（含 loader 路径）
         // options.resolve { loaders: [ { test: /\.less$/, loader: 'style!less' } ] }
         let absoluteFileName = yield _resolve(moduleName, context, options.resolve);
@@ -90,6 +93,7 @@ function parseModule(depTree, moduleName, context, options) {
         // require('./style.less');
         // require("/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/style-loader-fake/addStyle")(require("!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/node_modules/less-loader-fake/index.js!/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack/examples/loader/style.less"))
         // module.exports = ".content {\n  width: 50px;\n  height: 50px;\n  background-color: #000fff;\n}\n"
+
         // 解析各种依赖
         let parsedModule = parse(ret);
 
@@ -109,7 +113,7 @@ function parseModule(depTree, moduleName, context, options) {
         console.log('进入 parseModule');
         console.log('\nresolve 前: ', moduleName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
         console.log('\nresolved 结果: ', absoluteFileName.replace(new RegExp('/Users/lyy/Downloads/code/my-project/github/deep-webpack/fake-webpack', 'g'), ''));
-        // console.log('\nsource: ', source);
+        console.log('\nsource: ', source);
         console.log('\n经过 loader 处理的 source: ', ret);
         console.log('\nparse 解析经过 loader 处理的 source 发现的依赖: ', parsedModule.requires && parsedModule.requires.length, '\n', parsedModule.requires);
 
@@ -136,7 +140,6 @@ function parseModule(depTree, moduleName, context, options) {
                 for (let require of requires) {
                     // 已经处理过的模块,不再处理
                     if (depTree.mapModuleNameToId[require.name]) continue;
-                    console.log('~~~~ 递归2: ', require.name);
                     depTree = yield parseModule(depTree, require.name, context, options);
                 }
 
