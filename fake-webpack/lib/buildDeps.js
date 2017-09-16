@@ -122,7 +122,7 @@ function parseModule(depTree, moduleName, context, options) {
         if (requireModules && requireModules.length > 0) {
             for (let require of requireModules) {
                 console.log('\n\n');
-                console.log('~~~~ 发现依赖，递归1: ', require.name, '传入下一个 parseModule');
+                console.log('发现依赖，递归1: ', require.name, '传入下一个 parseModule');
                 console.log('\n\n');
                 depTree = yield parseModule(depTree, require.name, context, options);
             }
