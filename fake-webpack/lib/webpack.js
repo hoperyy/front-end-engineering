@@ -145,7 +145,7 @@ module.exports = function (mainModule, options) {
     co(function *() {
 
         // mainModule: 入口文件的绝对路径
-        // options: 一些配置项，类似于 webpack
+        // options: 一些配置项，类似于 webpack 的配置项
         // 分析模块间的依赖关系,生成模块依赖关系
         let depTree = yield buildDeps(mainModule, options);
 

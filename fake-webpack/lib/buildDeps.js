@@ -86,7 +86,7 @@ function parseModule(depTree, moduleName, context, options) {
 
         let source = fs.readFileSync(filename).toString();
 
-        // 执行 loader
+        // 执行 loader，可能是同步或异步的
         let ret = yield execLoaders(filenameWithLoaders, loaders, source, options);
 
         // ret: 经过 loader 检测处理过的 source:
@@ -122,7 +122,7 @@ function parseModule(depTree, moduleName, context, options) {
         if (requireModules && requireModules.length > 0) {
             for (let require of requireModules) {
                 console.log('\n\n');
-                console.log('发现依赖，递归1: ', require.name, '传入下一个 parseModule');
+                console.log('发现依赖，递归: ', require.name, '传入下一个 parseModule');
                 console.log('\n\n');
                 depTree = yield parseModule(depTree, require.name, context, options);
             }
