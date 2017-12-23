@@ -4,7 +4,7 @@
 
 ## 目录
 
-### 使用篇(更新至 webpack 3.5.5)
+### 使用篇(更新至 webpack 3.10.0)
 
 +   [项目个性化配置策略](https://github.com/hoperyy/deep-webpack/issues/11)
 +   [用纯 [webpack 结构] 替代 [gulp + webpack 结构] 开发脚手架](https://github.com/hoperyy/deep-webpack/issues/10)
