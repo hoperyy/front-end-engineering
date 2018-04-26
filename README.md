@@ -6,7 +6,7 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
 
 ## 目录
 
-### 使用篇
+### 使用
 
 +   [项目个性化配置策略](https://github.com/hoperyy/deep-webpack/issues/11)
 +   [用纯 [webpack 结构] 替代 [gulp + webpack 结构] 开发脚手架](https://github.com/hoperyy/deep-webpack/issues/10)
