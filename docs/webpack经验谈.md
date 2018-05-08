@@ -42,7 +42,9 @@ resolveLoader: {
 }
 ```
 
-可以提升性能
+可以提升性能。
+
+更多 loader 知识：https://juejin.im/post/5accd3aa6fb9a028dd4e91d3
     
 ## 替换关键字
 
