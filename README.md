@@ -41,7 +41,9 @@ README.md
 
 这个动作完全可以自动化，通过工具生成标准模板。
 
-工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `init` 命令
+工具推荐：
+
++   [bio-cli](https://github.com/weidian-inc/bio-cli) `init` 命令
 
 ### 本地开发
 
@@ -49,7 +51,9 @@ README.md
 
 配置的过程是繁琐的，这个过程我们也需要 **自动化**。
 
-工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `run` 命令
+工具推荐：
+
++   [bio-cli](https://github.com/weidian-inc/bio-cli) `run` 命令
 
 ### 数据 Mock
 
@@ -80,7 +84,9 @@ README.md
 
 两种方式都可以，看团队需求。
 
-工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `lint` 命令
+工具推荐：
+
++   [bio-cli](https://github.com/weidian-inc/bio-cli) `lint` 命令
 
 ### 分支管理
 
@@ -100,7 +106,9 @@ README.md
 
 本地开发和线上部署两个阶段的自动化测试，需要有机结合起来，保证测试环境的一致性。
 
-工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `test` 命令
+工具推荐：
+
++   [bio-cli](https://github.com/weidian-inc/bio-cli) `test` 命令
 
 ### 部署
 
