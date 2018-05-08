@@ -178,7 +178,7 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
 +   Sublime: https://www.sublimetext.com/
 +   webstorm: https://www.jetbrains.com/webstorm/
 
-更重要是是，这些 IDE 提供了插件机制，想要的功能通过插件大部分能够实现。
+更重要的是，这些 IDE 提供了插件机制，想要的功能通过插件大部分能够实现。
 
 ## 资料
 
