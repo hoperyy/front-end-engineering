@@ -22,7 +22,7 @@
 +   规范化
 +   傻瓜化
 
-## 前端工程化在前端开发流程的体现
+## 前端工程化的体现
 
 **自动化** 是前端工程化的重要特征。我们通过开发一些工具，将重复性工作自动化，以提高开发、协作效率。
 
@@ -65,6 +65,10 @@ README.md
 
 +   [easy-mock](https://easy-mock.com/)
 +   [bio-cli](https://github.com/weidian-inc/bio-cli) `mock` 命令
+
+### 模块管理
+
+
 
 ### 代码规范
 
