@@ -32,6 +32,10 @@ resolve: {
     
 ## 指定 `webpack` 加载各种 `loader` 时查找的路径
 
+webpack 默认从 node_modules 里找 loader。
+
+可以手动设置 loader 查找顺序以提升性能：
+
 ```
 resolveLoader: {
     modules: [
@@ -41,8 +45,6 @@ resolveLoader: {
     ]
 }
 ```
-
-可以提升性能。
 
 更多 loader 知识：https://juejin.im/post/5accd3aa6fb9a028dd4e91d3
     
