@@ -111,11 +111,11 @@ README.md
 +   自动拉取项目代码
 +   代码规范检测（需和本地开发阶段保持一致）
 +   检查项目分支是否已合并 master，如没有，则暂停部署。避免进行回归测试。
-+   自动执行测试用例
++   自动执行测试用例（需和本地开发阶段保持一致）
 +   自动编译打包
 +   健全的错误捕获机制，避免将问题代码发布到线上
 
-## 工具介绍
+## 工具
 
 ### webpack
 
@@ -133,6 +133,17 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
 +   分析
 
     +   实现一个简单的 webpack：https://github.com/youngwind/fake-webpack
+
+### IDE
+
+强大的 IDE 可以让开发过程如丝般顺滑。下面是对前端开发而言，比较优秀的 IDE：
+
++   VSCode: https://code.visualstudio.com/
++   Atom: https://atom.io/
++   Sublime: https://www.sublimetext.com/
++   webstorm: https://www.jetbrains.com/webstorm/
+
+更重要是是，这些 IDE 提供了插件机制，想要的功能通过插件大部分能够实现。
 
 ## 资料
 
