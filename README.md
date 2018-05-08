@@ -4,8 +4,6 @@
 
 随着 Node.js 的兴起，诞生了如 gulp、grunt、webpack 等一批自动化工具，大大提升了前端在自动化、工程化等方面的效率，并降低了成本。
 
-前端工程化涵盖了很多内容，本项目主要用于整理我在前端工程化领域的理解。
-
 大体的来说，前端工程化有两层含义：
 
 +   广义的前端工程化
@@ -45,13 +43,24 @@ README.md
 
 工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `init` 命令
 
-## 项目开发
+## 本地开发
 
 前端使用的技术栈多种多样，如 vue/react/zepto 等，样式编辑有 less/sass/原生 css 等，js 有 es5/es6 等，而这种情况遇到的困难，就是如何配置各种工具才能产出浏览器可以识别的代码。
 
 配置的过程是繁琐的，这个过程我们也需要 **自动化**。
 
 工具介绍：[bio-cli](https://github.com/weidian-inc/bio-cli) `run` 命令
+
+## 数据 Mock
+
+前端和后端由于节奏不同，但前端有时又对接口依赖，怎么办呢？数据 Mock 就有用了。
+
+前后端数据格式在约定好后，前端同学在开发阶段接入 mock 数据，等到接口准备好后，转为真实数据即可。
+
+现在社区有很多工具可以 Mock 数据，推荐几个：
+
++   [easy-mock](https://easy-mock.com/)
++   [bio-cli](https://github.com/weidian-inc/bio-cli) `mock` 命令
 
 ## 代码规范
 
