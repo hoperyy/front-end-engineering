@@ -144,9 +144,11 @@ resolveLoader: {
 
 issue：https://github.com/webpack/webpack-dev-server/issues/727
 
-## 如何支持 `module.exports` 和 `import` 混用：https://github.com/59naga/babel-plugin-add-module-exports
+## 如何支持 `module.exports` 和 `import` 混用
 
-    通常情况下是不建议混用的，但在特殊的场景下，比如历史包袱等，可以用这个方案处理
+https://github.com/59naga/babel-plugin-add-module-exports
+
+通常情况下是不建议混用的，但在特殊的场景下，比如历史包袱等，可以用这个方案处理
 
 ## 性能优化
 
