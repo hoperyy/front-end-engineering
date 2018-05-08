@@ -134,7 +134,7 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
 
     +   实现一个简单的 webpack：https://github.com/youngwind/fake-webpack
 
-# 资料
+# （五）资料
 
 +   [webpack源码学习系列之一：如何实现一个简单的webpack](https://github.com/youngwind/blog/issues/99)
 +   [ 深入剖析 webpack 打包生成的一大堆代码到底是啥](http://blog.csdn.net/haodawang/article/details/77126686)
