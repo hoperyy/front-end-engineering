@@ -311,3 +311,6 @@ https://github.com/59naga/babel-plugin-add-module-exports
         比如如果设置为 `/web/`，访问 CSS 文件是 `127.0.0.1:8080/web/index.css`。
         但CSS 里面的图片最终的路径仍是 `/static/img/xxxx.png`。
 
+## 参考
+
+https://juejin.im/post/5ac9dc9af265da23884d5543
