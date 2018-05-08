@@ -1,5 +1,5 @@
 {
-  "name": "webpacker",
+  "name": "front-end-engineering",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,12 +7,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liuyuanyangscript/webpacker.git"
+    "url": "git+https://github.com/liuyuanyangscript/front-end-engineering.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liuyuanyangscript/webpacker/issues"
+    "url": "https://github.com/liuyuanyangscript/front-end-engineering/issues"
   },
-  "homepage": "https://github.com/liuyuanyangscript/webpacker#readme"
+  "homepage": "https://github.com/liuyuanyangscript/front-end-engineering#readme"
 }
