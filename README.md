@@ -197,6 +197,7 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
     +   [Babel 插件开发指南](https://github.com/brigand/babel-plugin-handbook/blob/master/translations/zh-Hans/README.md)
     +   [从零开始编写一个 babel 插件](https://juejin.im/post/5a17d51851882531b15b2dfc)
     +   [写一个 babel 插件](https://cnodejs.org/topic/5a9317d38d6e16e56bb808d1)
+    +   [细说 webpack 之流程篇](http://taobaofed.org/blog/2016/09/09/webpack-flow/)
 
 ### IDE
 
