@@ -194,6 +194,7 @@ webpack 的变化非常快，目前我们的尝试版本是 3.10.0。
     +   实现一个简单的 webpack：https://github.com/youngwind/fake-webpack
     +   webpack 原理与实战：http://imweb.io/topic/59324940b9b65af940bf58ae
     +   [Webpack 打包优化之速度篇](https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed/)
+    +   [Babel 插件开发指南](https://github.com/brigand/babel-plugin-handbook/blob/master/translations/zh-Hans/README.md)
 
 ### IDE
 
