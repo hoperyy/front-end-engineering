@@ -1,4 +1,4 @@
-[issue](https://api.github.com/repos/hoperyy/front-end-engineering/issues/10)
+[issue](https://github.com/hoperyy/front-end-engineering/issues/10)
 
 gulp + webpack 这种结构是常见的脚手架开发方式，这种方式的好处是十分灵活，但缺点也很明显，对代码编写的质量要求较高，因为很容易陷入各种处理逻辑。
 

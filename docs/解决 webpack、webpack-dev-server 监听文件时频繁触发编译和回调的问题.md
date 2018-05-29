@@ -1,4 +1,4 @@
-[issue](https://api.github.com/repos/hoperyy/front-end-engineering/issues/4)
+[issue](https://github.com/hoperyy/front-end-engineering/issues/4)
 
 ## 问题背景
 
