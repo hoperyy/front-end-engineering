@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "node build.js",
     "push": "git add . && git commit -m 'update' && git push origin master && exit 0"
   },
   "repository": {
@@ -14,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/liuyuanyangscript/front-end-engineering/issues"
   },
-  "homepage": "https://github.com/liuyuanyangscript/front-end-engineering#readme"
+  "homepage": "https://github.com/liuyuanyangscript/front-end-engineering#readme",
+  "dependencies": {
+    "generate-docs-by-github-issue": "^1.0.1"
+  }
 }
