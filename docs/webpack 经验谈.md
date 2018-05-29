@@ -1,4 +1,4 @@
-[issue](https://api.github.com/repos/hoperyy/front-end-engineering/issues/14)
+[issue](https://github.com/hoperyy/front-end-engineering/issues/14)
 
 ## 为引入的资源指定后缀
     
