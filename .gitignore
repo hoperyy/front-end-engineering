@@ -2,3 +2,4 @@ node_modules/*
 .DS_Store
 .git/*
 npm-debug.log
+cached-docs/**
