@@ -92,10 +92,6 @@ README.md
 
 两种方式都可以，看团队需求。
 
-工具推荐：
-
-+   [bio-cli](https://github.com/weidian-inc/bio-cli) `lint` 命令
-
 ### 分支管理
 
 现在大多数团队使用 git 进行代码管理。
@@ -113,10 +109,6 @@ README.md
     线上部署阶段，很容易进行自动化测试的中心化管理，如果有项目没有写测试用例，中心化平台可以做各种操作，如暂停部署等。
 
 本地开发和线上部署两个阶段的自动化测试，需要有机结合起来，保证测试环境的一致性。
-
-工具推荐：
-
-+   [bio-cli](https://github.com/weidian-inc/bio-cli) `test` 命令
 
 ### 部署
 
