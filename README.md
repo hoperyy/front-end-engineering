@@ -1,4 +1,4 @@
-**项目内容同步在我的[github blog](https://github.com/hoperyy/blog) - 前端工程化部分**
+**项目内容同步在我的 [github blog](https://github.com/hoperyy/blog) - 前端工程化部分**
 
 ## 前言
 
