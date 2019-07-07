@@ -1,3 +1,5 @@
+**项目内容同步在我的[github blog](https://github.com/hoperyy/blog) - 前端工程化部分**
+
 ## 前言
 
 自从前后端分离以来，“前端工程化”已经是前端领域的高频词汇。
